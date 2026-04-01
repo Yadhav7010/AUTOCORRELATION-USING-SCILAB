@@ -1,46 +1,104 @@
 # SIMULATION-OF-AUTOCORRELATION-AND-PSD-USING-SCILAB-1-T1-C12-EVEN
-AIM:
 
+---
+
+## AIM:
 Write a program for Autocorrelation and PSD of signals in SCILAB and verify Wiener-Khinchin relation.
 
-EQUIPMENTS Needed:
+---
 
-.Computer with i3 Processor
+## EQUIPMENTS NEEDED:
+- Computer with i3 Processor  
+- SCI LAB  
 
-.SCI LAB
+---
 
-THEORY:
-
+## THEORY:
 The Wiener-Khinchin theorem states that the power spectral density of a wide sense stationary random process is the Fourier transform of the corresponding autocorrelation function.
 
-Algorithm:
+---
 
-1.Load or Define the Signal: Input your time-domain signal.
+## ALGORITHM:
 
-2.Compute Autocorrelation: Calculate the autocorrelation function of the signal.
+1. Load or Define the Signal: Input your time-domain signal  
+2. Compute Autocorrelation: Calculate the autocorrelation function  
+3. Compute Power Spectral Density (PSD): Estimate PSD using FFT or other methods  
+4. Plot Results: Visualize autocorrelation and PSD  
 
-3.Compute Power Spectral Density (PSD): Estimate the PSD of the signal, either directly using a method like Welch’s periodogram or by using the Fourier transform of the autocorrelation.
+---
 
-4.Plot Results: Visualize the autocorrelation function and PSD.
+## PROCEDURE:
+- Refer Algorithms and write code for the experiment  
+- Open SCILAB in System  
+- Type your code in New Editor  
+- Save the file  
+- Execute the code  
+- If any error, correct it and execute again  
+- Verify the generated waveform using Tabulation and Model Waveform  
 
-PROCEDURE:
+---
 
-Refer Algorithms and write code for the experiment.
+## PROGRAM
+```scilab
+clc;
+clear;
+close;
 
-Open SCILAB in System
+// Parameters
+fs = 1000;          // Sampling frequency
+t = 0:1/fs:0.65;    // Time vector
+fm = 3;             // Signal frequency
 
-Type your code in New Editor
+// Signal
+x = 25 * sin(2 * %pi * fm * t);
 
-Save the file
+// Autocorrelation
+Rxx = xcorr(x, x);
 
-Execute the code
+// FFT of signal
+X = fft(x);
+X_mag = abs(X);
 
-If any Error, correct it in code and execute again
+// FFT of autocorrelation
+Rxx_fft = fft(Rxx);
+Rxx_mag = abs(Rxx_fft);
 
-Verify the generated waveform using Tabulation and Model Waveform
+// Power Spectrum
+Pxx = (abs(X).^2) / length(X);
 
-PROGRAM:
+// Plotting
+subplot(3,2,1);
+plot(t, x);
+xtitle("Signal x(t)");
+xgrid();
 
-OUTPUT:
+subplot(3,2,2);
+plot(Rxx);
+xtitle("Autocorrelation");
+xgrid();
 
-RESULT:
+subplot(3,2,3);
+plot(Rxx_mag);
+xtitle("FFT of Autocorrelation");
+xgrid();
+
+subplot(3,2,4);
+plot(X_mag);
+xtitle("FFT of Signal");
+xgrid();
+
+subplot(3,2,5);
+plot(Pxx);
+xtitle("Power Spectrum");
+xgrid();
+```
+
+---
+
+## OUTPUT:
+<img width="1919" height="1199" src="https://github.com/user-attachments/assets/ddbb488d-bb20-4f6b-bdfc-8d93c7d5e266" />
+
+---
+
+## RESULT:
+Thus the autocorrelation and power spectral density of the given signal were obtained using SCILAB and the Wiener-Khinchin theorem was verified successfully.
