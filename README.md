@@ -97,6 +97,8 @@ xgrid();
 
 ## OUTPUT:
 <img width="1919" height="1199" src="https://github.com/user-attachments/assets/ddbb488d-bb20-4f6b-bdfc-8d93c7d5e266" />
+<img width="1280" height="652" alt="image" src="https://github.com/user-attachments/assets/18f8b64a-d01c-4ad6-9e48-060d2bcb8107" />
+
 
 ---
 
